@@ -1,0 +1,62 @@
+@keyframes growIn {
+  0% {
+    transform: scale(.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.App {
+  text-align: center;
+  background-color:#afd7ee;
+}
+
+body {
+  background-color: rgb(46, 43, 43);
+}
+
+.title {
+  background-color: #fff;
+}
+
+h1 {
+  color:black;
+}
+
+.property-grid {
+  margin-top: 2vh;
+  display: grid;
+  grid-template-columns: repeat(3,30vw);
+  margin-left:2vw;
+  grid-gap:2vw;
+}
+
+
+.property {
+  box-shadow: 8px 10px 42px 3px rgba(0,0,0,0.5);
+  display:flex;
+  gap:1vw;
+  padding-left:.8vw;
+  background-color: white;
+  animation: 1s ease-in 0s 1 growIn;
+}
+
+.property:hover {
+  transform: scale(1.2);
+  transition: transform .25s;
+  transition-timing-function: ease-in;
+}
+
+.propertyDescription {
+  margin-top: 3vh;
+}
+.propertyDescription > h2{
+  color:black;
+  font-size: 1.3em;
+}
+
+.property > img {
+  flex-grow: 1;
+  height: 30vh;
+}
