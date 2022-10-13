@@ -1,9 +1,12 @@
 import {Navigate} from 'react-router-dom';
 
-import Auth from './Auth';
+import {getAuth} from "firebase/auth";
+
+
 import Database from './Database'; 
 
+const auth = getAuth();
 
 export default function ProtectedDatabaseRoute(){
-    return Auth.isAuthenticated() ? <Database /> : <Navigate to = '/' />
+    return auth.currentUser ? <Database /> : <Navigate to = '/signIn' />
 }

@@ -1,9 +1,9 @@
 import { useState,useEffect } from "react"
-
+import {auth} from "./firebase-config";
 export default function Database(){
     const [propertyData,setPropertyData] = useState([]);
     const fetchData = async () => {
-        const response = await fetch('/query');
+        const response = await fetch(`/query/${auth.currentUser.email}`);
 
         setPropertyData(await response.json())
     }
@@ -16,15 +16,16 @@ export default function Database(){
             <div className='property-grid'>
             {console.log(propertyData)}
             {propertyData.map((property)=>{
+                {console.log(property)}
                 return (
                 <div className='property'>
                     <div className="propertyDescription">
-                        <h1>${property.price}</h1>
-                        <h1>{property.beds} Beds</h1> 
-                        <h1>{property.baths} Baths</h1>
-                        <h1>{property.status}</h1>
+                        <h1>${property.userProperties.price}</h1>
+                        <h1>{property.userProperties.beds} Beds</h1> 
+                        <h1>{property.userProperties.baths} Baths</h1>
+                        <h1>{property.userProperties.status}</h1>
                     </div>
-                <img src={property.image} />
+                <img src={property.userProperties.image} />
                 </div>
                 )
             })}

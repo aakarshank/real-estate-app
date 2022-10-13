@@ -8,4 +8,10 @@ const propertySchema = new mongoose.Schema({
     image:String
 })
 
-module.exports = mongoose.model('Property',propertySchema)  
+const userSchema = new mongoose.Schema({
+    username:String,
+    userProperties:propertySchema
+})
+
+
+module.exports = mongoose.model('UserSchema',userSchema)  
